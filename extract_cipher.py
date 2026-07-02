@@ -40,27 +40,49 @@ def extract_cipher_config(player_hash):
 
     # 2. Extract signature deobfuscation function and arguments
     sig = None
-    # Look for patterns like Tl(48, 5831, decodeURIComponent(a)) or similar
-    sig_match = re.search(r'([a-zA-Z0-9$_]{1,8})\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*decodeURIComponent\s*\(', js)
-    if sig_match:
-        func_name = sig_match.group(1)
-        arg1 = sig_match.group(2)
-        arg2 = sig_match.group(3)
-        sig = f"{func_name}({arg1},{arg2},INPUT)"
-    else:
-        # Fallback to single argument signature function deobfuscation if found
-        sig_match_fallback = re.search(r'([a-zA-Z0-9$_]{1,8})\s*\(\s*(\d+)\s*,\s*decodeURIComponent\s*\(', js)
-        if sig_match_fallback:
-            func_name = sig_match_fallback.group(1)
-            arg = sig_match_fallback.group(2)
-            sig = f"{func_name}({arg},INPUT)"
+    # Modern pattern: function name definition containing decodeURIComponent, followed by two-argument call
+    sig_def_match = re.search(
+        r'([a-zA-Z0-9$_]+)=function\([a-zA-Z0-9$_]+,[a-zA-Z0-9$_]+,[a-zA-Z0-9$_]+\)\{var\s+[a-zA-Z0-9$_]+=[a-zA-Z0-9$_]+\^[a-zA-Z0-9$_]+;[^{}]+decodeURIComponent',
+        js
+    )
+    if sig_def_match:
+        sig_func_name = sig_def_match.group(1)
+        sig_call_match = re.search(
+            rf'\b{re.escape(sig_func_name)}\s*\(\s*(\d+)\s*,\s*(\d+)\s*,',
+            js
+        )
+        if sig_call_match:
+            sig = f"{sig_func_name}({sig_call_match.group(1)},{sig_call_match.group(2)},INPUT)"
+
+    # Fallback to legacy signature extraction patterns
+    if not sig:
+        sig_match = re.search(r'([a-zA-Z0-9$_]{1,8})\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*decodeURIComponent\s*\(', js)
+        if sig_match:
+            func_name = sig_match.group(1)
+            arg1 = sig_match.group(2)
+            arg2 = sig_match.group(3)
+            sig = f"{func_name}({arg1},{arg2},INPUT)"
+        else:
+            sig_match_fallback = re.search(r'([a-zA-Z0-9$_]{1,8})\s*\(\s*(\d+)\s*,\s*decodeURIComponent\s*\(', js)
+            if sig_match_fallback:
+                func_name = sig_match_fallback.group(1)
+                arg = sig_match_fallback.group(2)
+                sig = f"{func_name}({arg},INPUT)"
 
     # 3. Extract n-parameter transform class (nClass)
     n_class = None
-    # Look for new g.W_('https://x.googlevideo.com/videoplayback?n=' + n, true)
-    n_match = re.search(r'new\s+g\.([a-zA-Z0-9$_]+)\s*\(\s*["\']https://x\.googlevideo\.com/videoplayback\?n=["\']', js)
-    if n_match:
-        n_class = n_match.group(1)
+    # Modern pattern: class instantiated inside get("n") flow
+    n_class_match = re.search(
+        r'new\s+g\.([a-zA-Z0-9$_]+)\s*\(\s*[a-zA-Z0-9$_]+\s*,\s*(?:!0|true)\s*\)\s*\)\s*\.\s*get\s*\(\s*["\']n["\']\s*\)',
+        js
+    )
+    if n_class_match:
+        n_class = n_class_match.group(1)
+    else:
+        # Fallback to legacy W_ / Ga / etc. patterns
+        n_match = re.search(r'new\s+g\.([a-zA-Z0-9$_]+)\s*\(\s*["\']https://x\.googlevideo\.com/videoplayback\?n=["\']', js)
+        if n_match:
+            n_class = n_match.group(1)
 
     print(f"Extracted info: sts={sts}, sig={sig}, nClass={n_class}")
     
