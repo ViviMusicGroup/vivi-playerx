@@ -86,6 +86,17 @@ def extract_cipher_config(player_hash):
 
     print(f"Extracted info: sts={sts}, sig={sig}, nClass={n_class}")
     
+    if not (sts and sig and n_class):
+        print("DIAGNOSTIC DETAILS FOR EXTRACTION FAILURE:")
+        print(f"JS Length: {len(js)} characters")
+        print("Searching for decodeURIComponent occurrences:")
+        matches = list(re.finditer(r'decodeURIComponent', js))
+        print(f"Found {len(matches)} occurrences of decodeURIComponent.")
+        for idx, m in enumerate(matches[:5]):
+            start = max(0, m.start() - 100)
+            end = min(len(js), m.end() + 100)
+            print(f"Occurrence {idx}: {repr(js[start:end])}")
+            
     if sts and sig and n_class:
         return {
             "sig": sig,
