@@ -46,11 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const filtered = {};
         for (const [hash, data] of Object.entries(allPlayers)) {
-            const signature = (data.sig || "").toLowerCase();
-            const nClass = (data.nClass || "").toLowerCase();
             const aliases = (data.aliases || []).join(' ').toLowerCase();
 
-            if (hash.includes(query) || signature.includes(query) || nClass.includes(query) || aliases.includes(query)) {
+            if (hash.includes(query) || aliases.includes(query)) {
                 filtered[hash] = data;
             }
         }
@@ -70,11 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         for (const [hash, data] of Object.entries(playersMap)) {
             const item = document.createElement('div');
-            item.className = 'py-5 px-4 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-white/[0.015] rounded-xl transition-all duration-150';
+            item.className = 'py-5 px-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-white/[0.015] rounded-xl transition-all duration-150';
 
             // Base fields
-            const sig = data.sig || "N/A";
-            const nClass = data.nClass || "N/A";
             const sts = data.sts || "N/A";
             const aliasesList = data.aliases || [];
 
@@ -93,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             item.innerHTML = `
                 <!-- Left: Hash details -->
-                <div class="flex-grow max-w-sm">
+                <div class="flex-grow">
                     <div class="flex items-center gap-3">
                         <span class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
                         <span class="text-base font-bold font-geist text-white select-all">${hash}</span>
@@ -102,16 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${aliasesHtml}
                 </div>
 
-                <!-- Right: Monospace fields -->
-                <div class="flex flex-col sm:flex-row gap-4 md:gap-8 flex-shrink-0 w-full md:w-auto">
-                    <div class="w-full sm:w-64">
-                        <span class="text-[10px] font-semibold text-vivi-blue/60 tracking-wider uppercase block mb-1 font-geist">Signature Cipher</span>
-                        <code class="code-block block p-2 rounded-lg text-xs break-all text-white border border-white/5 select-all">${sig}</code>
-                    </div>
-                    <div class="w-full sm:w-48">
-                        <span class="text-[10px] font-semibold text-vivi-blue/60 tracking-wider uppercase block mb-1 font-geist">N-Throttle Class</span>
-                        <code class="code-block block p-2 rounded-lg text-xs break-all text-emerald-400 border border-white/5 select-all">${nClass}</code>
-                    </div>
+                <!-- Right: Status display only (Strictly hiding raw cipher/nClass parameters) -->
+                <div class="flex items-center gap-2 text-emerald-400 font-geist text-sm select-none">
+                    <span class="material-symbols-outlined text-[18px]">verified</span>
+                    <span>Decryption Active</span>
                 </div>
             `;
 
