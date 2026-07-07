@@ -40,19 +40,30 @@ def extract_cipher_config(player_hash):
 
     # 2. Extract signature deobfuscation function and arguments
     sig = None
-    # Modern pattern: function name definition containing decodeURIComponent, followed by two-argument call
-    sig_def_match = re.search(
-        r'([a-zA-Z0-9$_]+)=function\([a-zA-Z0-9$_]+,[a-zA-Z0-9$_]+,[a-zA-Z0-9$_]+\)\{var\s+[a-zA-Z0-9$_]+=[a-zA-Z0-9$_]+\^[a-zA-Z0-9$_]+;[^{}]+decodeURIComponent',
+
+    # Modern 2026 nested caller pattern (e.g., zf(5,4574,Yz(17,6020,K.s)))
+    nested_caller_match = re.search(
+        r'([a-zA-Z0-9$_]+)\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*([a-zA-Z0-9$_]+)\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*[a-zA-Z0-9$_]+\.s\s*\)\s*\)',
         js
     )
-    if sig_def_match:
-        sig_func_name = sig_def_match.group(1)
-        sig_call_match = re.search(
-            rf'\b{re.escape(sig_func_name)}\s*\(\s*(\d+)\s*,\s*(\d+)\s*,',
+    if nested_caller_match:
+        groups = nested_caller_match.groups()
+        sig = f"{groups[0]}({groups[1]},{groups[2]},{groups[3]}({groups[4]},{groups[5]},INPUT))"
+
+    # Modern pattern: function name definition containing decodeURIComponent, followed by two-argument call
+    if not sig:
+        sig_def_match = re.search(
+            r'([a-zA-Z0-9$_]+)=function\([a-zA-Z0-9$_]+,[a-zA-Z0-9$_]+,[a-zA-Z0-9$_]+\)\{var\s+[a-zA-Z0-9$_]+=[a-zA-Z0-9$_]+\^[a-zA-Z0-9$_]+;[^{}]+decodeURIComponent',
             js
         )
-        if sig_call_match:
-            sig = f"{sig_func_name}({sig_call_match.group(1)},{sig_call_match.group(2)},INPUT)"
+        if sig_def_match:
+            sig_func_name = sig_def_match.group(1)
+            sig_call_match = re.search(
+                rf'\b{re.escape(sig_func_name)}\s*\(\s*(\d+)\s*,\s*(\d+)\s*,',
+                js
+            )
+            if sig_call_match:
+                sig = f"{sig_func_name}({sig_call_match.group(1)},{sig_call_match.group(2)},INPUT)"
 
     # Fallback to legacy signature extraction patterns
     if not sig:
