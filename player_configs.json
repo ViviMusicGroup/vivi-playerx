@@ -292,6 +292,12 @@
       "nClass": "B3",
       "sts": 20633,
       "aliases": []
+    },
+    "f551602d": {
+      "sig": "vR(4,6111,jZ(25,7600,INPUT))",
+      "nClass": "Vg",
+      "sts": 20639,
+      "aliases": []
     }
   }
 }
