@@ -304,6 +304,12 @@
       "nClass": "WM",
       "sts": 20640,
       "aliases": []
+    },
+    "66a6ea83": {
+      "sig": "C3(14,932,f3(21,4296,INPUT))",
+      "nClass": "WM",
+      "sts": 20640,
+      "aliases": []
     }
   }
 }
