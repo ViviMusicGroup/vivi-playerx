@@ -310,6 +310,12 @@
       "nClass": "WM",
       "sts": 20640,
       "aliases": []
+    },
+    "dd53c628": {
+      "sig": "xz(4,7019,J6(10,7390,INPUT))",
+      "nClass": "cY",
+      "sts": 20642,
+      "aliases": []
     }
   }
 }
