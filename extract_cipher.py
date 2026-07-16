@@ -106,19 +106,22 @@ def extract_cipher_config(player_hash):
     return None
 
 def main():
-    player_hash = get_current_player_hash()
-    if not player_hash:
-        print("Failed to get current player hash.")
-        sys.exit(1)
+    if len(sys.argv) > 1:
+        player_hashes = sys.argv[1:]
+    else:
+        player_hash = get_current_player_hash()
+        if not player_hash:
+            print("Failed to get current player hash.")
+            sys.exit(1)
+        player_hashes = [player_hash]
 
-    print(f"Current player hash is: {player_hash}")
+    print(f"Processing player hashes: {player_hashes}")
 
     # Read existing config file
     try:
         with open(CONFIG_FILE, "r") as f:
             config_data = json.load(f)
     except FileNotFoundError:
-        # Initialize default config if not found
         config_data = {
             "schemaVersion": 1,
             "players": {}
@@ -128,41 +131,48 @@ def main():
         sys.exit(1)
 
     players = config_data.get("players", {})
+    updated = False
 
-    # Check if hash is already present in configs or any aliases
-    is_known = False
-    for p_hash, p_data in players.items():
-        if p_hash == player_hash or player_hash in p_data.get("aliases", []):
-            is_known = True
-            break
+    for player_hash in player_hashes:
+        # Check if hash is already present in configs or any aliases
+        is_known = False
+        for p_hash, p_data in players.items():
+            if p_hash == player_hash or player_hash in p_data.get("aliases", []):
+                is_known = True
+                break
 
-    if is_known:
-        print(f"Player {player_hash} is already known. No update needed.")
-        sys.exit(0)
+        if is_known:
+            print(f"Player {player_hash} is already known. Skipping.")
+            continue
 
-    # Perform extraction
-    extracted = extract_cipher_config(player_hash)
-    if not extracted:
-        print(f"Failed to extract deobfuscation config for player {player_hash}.")
-        sys.exit(1)
+        # Perform extraction
+        extracted = extract_cipher_config(player_hash)
+        if not extracted:
+            print(f"Failed to extract deobfuscation config for player {player_hash}.")
+            continue
 
-    # Add to players mapping
-    players[player_hash] = {
-        "sig": extracted["sig"],
-        "nClass": extracted["nClass"],
-        "sts": extracted["sts"],
-        "aliases": []
-    }
-    config_data["players"] = players
+        # Add to players mapping
+        players[player_hash] = {
+            "sig": extracted["sig"],
+            "nClass": extracted["nClass"],
+            "sts": extracted["sts"],
+            "aliases": []
+        }
+        updated = True
+        print(f"Successfully extracted and matched player {player_hash}!")
 
-    # Save config file back
-    try:
-        with open(CONFIG_FILE, "w") as f:
-            json.dump(config_data, f, indent=2)
-        print(f"Successfully added player {player_hash} to {CONFIG_FILE}!")
-    except Exception as e:
-        print(f"Error writing config file: {e}")
-        sys.exit(1)
+    if updated:
+        config_data["players"] = players
+        # Save config file back
+        try:
+            with open(CONFIG_FILE, "w") as f:
+                json.dump(config_data, f, indent=2)
+            print(f"Successfully updated {CONFIG_FILE}!")
+        except Exception as e:
+            print(f"Error writing config file: {e}")
+            sys.exit(1)
+    else:
+        print("No new player configurations to update.")
 
 if __name__ == "__main__":
     main()

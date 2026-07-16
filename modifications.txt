@@ -1,0 +1,14 @@
+Modifications made to vivimusic-cipher repository:
+
+1. player_configs.json
+   - Added decryption configurations for player hashes:
+     * "882a803a" (signature timestamp: 20648)
+     * "3241c7eb" (signature timestamp: 20649)
+
+2. extract_cipher.py
+   - Modified main() function to accept user-provided player hashes as command-line arguments (e.g. `python extract_cipher.py 3241c7eb`).
+   - Enabled sequential processing for multiple player hashes.
+
+3. .github/workflows/update.yml
+   - Added manual trigger dispatch capability (`workflow_dispatch`) with a text input field for player hashes.
+   - Updated execution step to forward manual input arguments to extract_cipher.py when run manually from GitHub Actions UI.

@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '0 */6 * * *'  # Runs every 6 hours
   workflow_dispatch:      # Allows manual trigger
+    inputs:
+      player_hashes:
+        description: 'Space-separated list of custom player hashes to extract (e.g. 3241c7eb)'
+        required: false
+        default: ''
 
 permissions:
   contents: write         # Required to push updates back to the repository
@@ -21,7 +26,12 @@ jobs:
           python-version: '3.10'
 
       - name: Run extractor script
-        run: python extract_cipher.py
+        run: |
+          if [ -n "${{ github.event.inputs.player_hashes }}" ]; then
+            python extract_cipher.py ${{ github.event.inputs.player_hashes }}
+          else
+            python extract_cipher.py
+          fi
 
       - name: Commit and push changes
         run: |
