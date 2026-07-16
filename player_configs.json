@@ -322,6 +322,18 @@
       "nClass": "tA",
       "sts": 20646,
       "aliases": []
+    },
+    "882a803a": {
+      "sig": "WB(27,5330,Vk(38,2047,INPUT))",
+      "nClass": "yk",
+      "sts": 20648,
+      "aliases": []
+    },
+    "3241c7eb": {
+      "sig": "OI(35,7321,x9(6,8270,INPUT))",
+      "nClass": "uS",
+      "sts": 20649,
+      "aliases": []
     }
   }
 }
