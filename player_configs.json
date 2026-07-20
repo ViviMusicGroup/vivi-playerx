@@ -340,6 +340,12 @@
       "nClass": "qY",
       "sts": 20653,
       "aliases": []
+    },
+    "dfc3d2b2": {
+      "sig": "OI(35,7321,x9(6,8270,INPUT))",
+      "nClass": "uS",
+      "sts": 20649,
+      "aliases": []
     }
   }
 }
