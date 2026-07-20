@@ -334,6 +334,12 @@
       "nClass": "uS",
       "sts": 20649,
       "aliases": []
+    },
+    "093b19ed": {
+      "sig": "RO(4,8693,ze(17,3137,INPUT))",
+      "nClass": "qY",
+      "sts": 20653,
+      "aliases": []
     }
   }
 }
