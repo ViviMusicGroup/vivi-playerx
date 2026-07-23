@@ -352,6 +352,12 @@
       "nClass": "ei",
       "sts": 20654,
       "aliases": []
+    },
+    "7a7969c2": {
+      "sig": "Zr(23,570,f5(1,50,INPUT))",
+      "nClass": "A_",
+      "sts": 20655,
+      "aliases": []
     }
   }
 }
