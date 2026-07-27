@@ -364,6 +364,12 @@
       "nClass": "qC",
       "sts": 20658,
       "aliases": []
+    },
+    "15147aab": {
+      "sig": "Zi(74,5645,BO(2,6112,INPUT))",
+      "nClass": "on",
+      "sts": 20656,
+      "aliases": []
     }
   }
 }
