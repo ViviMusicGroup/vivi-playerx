@@ -370,6 +370,12 @@
       "nClass": "on",
       "sts": 20656,
       "aliases": []
+    },
+    "b81a9a58": {
+      "sig": "Rh(11,5906,oh(4,766,INPUT))",
+      "nClass": "Gx",
+      "sts": 20660,
+      "aliases": []
     }
   }
 }
