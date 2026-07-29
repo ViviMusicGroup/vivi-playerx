@@ -376,6 +376,12 @@
       "nClass": "Gx",
       "sts": 20660,
       "aliases": []
+    },
+    "bed7a914": {
+      "sig": "wzh(10,6027,GL(2,443,INPUT))",
+      "nClass": "Nk",
+      "sts": 20662,
+      "aliases": []
     }
   }
 }
