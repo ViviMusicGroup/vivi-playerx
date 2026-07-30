@@ -382,6 +382,12 @@
       "nClass": "Nk",
       "sts": 20662,
       "aliases": []
+    },
+    "02fa8099": {
+      "sig": "cE(16,7711,C6(48,8118,INPUT))",
+      "nClass": "qU",
+      "sts": 20661,
+      "aliases": []
     }
   }
 }
