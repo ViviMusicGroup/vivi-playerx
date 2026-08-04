@@ -394,6 +394,12 @@
       "nClass": "m$",
       "sts": 20663,
       "aliases": []
+    },
+    "ea6f527e": {
+      "sig": "kG(2,7008,wq(33,5620,INPUT))",
+      "nClass": "mv",
+      "sts": 20667,
+      "aliases": []
     }
   }
 }
