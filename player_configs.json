@@ -388,6 +388,12 @@
       "nClass": "qU",
       "sts": 20661,
       "aliases": []
+    },
+    "ca042962": {
+      "sig": "KZ(10,3155,eT(17,4021,INPUT))",
+      "nClass": "m$",
+      "sts": 20663,
+      "aliases": []
     }
   }
 }
