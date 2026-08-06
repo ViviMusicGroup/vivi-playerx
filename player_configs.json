@@ -400,6 +400,12 @@
       "nClass": "mv",
       "sts": 20667,
       "aliases": []
+    },
+    "854a788e": {
+      "sig": "DN(2,1781,Ng(8,5308,INPUT))",
+      "nClass": "tL",
+      "sts": 20668,
+      "aliases": []
     }
   }
 }
