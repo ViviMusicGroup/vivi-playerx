@@ -436,6 +436,12 @@
       "nClass": "eg",
       "sts": 20676,
       "aliases": []
+    },
+    "1812d523": {
+      "sig": "FJ(27,6907,BW(9,4260,INPUT))",
+      "nClass": "kw",
+      "sts": 20677,
+      "aliases": []
     }
   }
 }
