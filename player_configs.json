@@ -466,6 +466,12 @@
       "nClass": "IV",
       "sts": 20684,
       "aliases": []
+    },
+    "2574220e": {
+      "sig": "Af(2,5322,nh(25,100,INPUT))",
+      "nClass": "cU",
+      "sts": 20683,
+      "aliases": []
     }
   }
 }
