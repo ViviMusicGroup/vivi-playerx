@@ -472,6 +472,12 @@
       "nClass": "cU",
       "sts": 20683,
       "aliases": []
+    },
+    "b7457b7c": {
+      "sig": "OD(27,1019,yD(3,493,INPUT))",
+      "nClass": "Bq",
+      "sts": 20688,
+      "aliases": []
     }
   }
 }
