@@ -478,6 +478,12 @@
       "nClass": "Bq",
       "sts": 20688,
       "aliases": []
+    },
+    "06ab6907": {
+      "sig": "vQ(29,4063,ki(29,254,INPUT))",
+      "nClass": "TW",
+      "sts": 20690,
+      "aliases": []
     }
   }
 }
