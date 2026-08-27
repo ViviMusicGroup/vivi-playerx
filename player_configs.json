@@ -484,6 +484,12 @@
       "nClass": "TW",
       "sts": 20690,
       "aliases": []
+    },
+    "6a0e84d6": {
+      "sig": "Ik(2,8129,c3(16,8307,INPUT))",
+      "nClass": "sP",
+      "sts": 20689,
+      "aliases": []
     }
   }
 }
