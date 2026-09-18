@@ -520,6 +520,12 @@
       "nClass": "VB",
       "sts": 20711,
       "aliases": []
+    },
+    "ecb23058": {
+      "sig": "mL(2,7008,KP(74,3329,INPUT))",
+      "nClass": "lx",
+      "sts": 20712,
+      "aliases": []
     }
   }
 }
