@@ -1,4 +1,4 @@
-Modifications made to vivimusic-cipher repository:
+Modifications made to vivi-playerx repository:
 
 1. player_configs.json
    - Added decryption configurations for player hashes:
