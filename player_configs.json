@@ -556,6 +556,12 @@
       "nClass": "CJ",
       "sts": 20725,
       "aliases": []
+    },
+    "1f293754": {
+      "sig": "Sc(4,5550,EG(29,6147,INPUT))",
+      "nClass": "t$",
+      "sts": 20726,
+      "aliases": []
     }
   }
 }
