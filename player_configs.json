@@ -580,6 +580,12 @@
       "nClass": "Ay",
       "sts": 20733,
       "aliases": []
+    },
+    "5203c085": {
+      "sig": "rb(6,3439,mi(24,1406,INPUT))",
+      "nClass": "bo",
+      "sts": 20732,
+      "aliases": []
     }
   }
 }
