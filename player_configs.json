@@ -586,6 +586,12 @@
       "nClass": "bo",
       "sts": 20732,
       "aliases": []
+    },
+    "22cb88bc": {
+      "sig": "s8(53,5260,RU(25,214,INPUT))",
+      "nClass": "vA",
+      "sts": 20737,
+      "aliases": []
     }
   }
 }
