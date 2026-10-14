@@ -592,6 +592,12 @@
       "nClass": "vA",
       "sts": 20737,
       "aliases": []
+    },
+    "21090930": {
+      "sig": "RG(3,5455,S3(14,1214,INPUT))",
+      "nClass": "xa",
+      "sts": 20738,
+      "aliases": []
     }
   }
 }
