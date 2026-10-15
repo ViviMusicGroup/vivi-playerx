@@ -598,6 +598,12 @@
       "nClass": "xa",
       "sts": 20738,
       "aliases": []
+    },
+    "0229cd64": {
+      "sig": "P1(19,1204,qE(61,7141,INPUT))",
+      "nClass": "bB",
+      "sts": 20739,
+      "aliases": []
     }
   }
 }
