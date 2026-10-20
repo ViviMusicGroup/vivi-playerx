@@ -610,6 +610,12 @@
       "nClass": "kq",
       "sts": 20740,
       "aliases": []
+    },
+    "67288f35": {
+      "sig": "Ww(23,7069,mr(19,7308,INPUT))",
+      "nClass": "Vw",
+      "sts": 20744,
+      "aliases": []
     }
   }
 }
