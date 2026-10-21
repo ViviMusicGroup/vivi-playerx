@@ -616,6 +616,12 @@
       "nClass": "Vw",
       "sts": 20744,
       "aliases": []
+    },
+    "55de7e60": {
+      "sig": "zl(19,5120,Rm(71,5678,INPUT))",
+      "nClass": "Gx",
+      "sts": 20745,
+      "aliases": []
     }
   }
 }
