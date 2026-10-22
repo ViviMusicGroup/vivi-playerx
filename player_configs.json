@@ -622,6 +622,12 @@
       "nClass": "Gx",
       "sts": 20745,
       "aliases": []
+    },
+    "cbcfbf2f": {
+      "sig": "Gl(16,1453,ra(7,5412,INPUT))",
+      "nClass": "Fl",
+      "sts": 20746,
+      "aliases": []
     }
   }
 }
