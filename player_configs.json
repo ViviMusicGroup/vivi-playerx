@@ -652,6 +652,12 @@
       "nClass": "tk",
       "sts": 20754,
       "aliases": []
+    },
+    "11a45ffb": {
+      "sig": "Qxa(2,2830,Ps(41,3667,INPUT))",
+      "nClass": "hq",
+      "sts": 20753,
+      "aliases": []
     }
   }
 }
