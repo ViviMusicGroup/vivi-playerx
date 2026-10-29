@@ -646,6 +646,12 @@
       "nClass": "Nx",
       "sts": 20752,
       "aliases": []
+    },
+    "67c916c1": {
+      "sig": "vk(48,5807,Qg(5,6688,INPUT))",
+      "nClass": "tk",
+      "sts": 20754,
+      "aliases": []
     }
   }
 }
