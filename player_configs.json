@@ -670,6 +670,12 @@
       "nClass": "HD",
       "sts": 20759,
       "aliases": []
+    },
+    "4a1e575f": {
+      "sig": "bs(9,1900,Vq(66,6525,INPUT))",
+      "nClass": "Wq",
+      "sts": 20758,
+      "aliases": []
     }
   }
 }
