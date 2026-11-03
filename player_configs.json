@@ -664,6 +664,12 @@
       "nClass": "tk",
       "sts": 20754,
       "aliases": []
+    },
+    "d9ba1984": {
+      "sig": "QD(56,7107,GD(48,1762,INPUT))",
+      "nClass": "HD",
+      "sts": 20759,
+      "aliases": []
     }
   }
 }
