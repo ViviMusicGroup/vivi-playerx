@@ -682,6 +682,12 @@
       "nClass": "xx",
       "sts": 20759,
       "aliases": []
+    },
+    "a5c2aafe": {
+      "sig": "gm(17,2144,$g(8,5909,INPUT))",
+      "nClass": "ch",
+      "sts": 20760,
+      "aliases": []
     }
   }
 }
