@@ -688,6 +688,12 @@
       "nClass": "ch",
       "sts": 20760,
       "aliases": []
+    },
+    "f5321ed3": {
+      "sig": "pp(17,3100,hf(4,5991,INPUT))",
+      "nClass": "kf",
+      "sts": 20761,
+      "aliases": []
     }
   }
 }
