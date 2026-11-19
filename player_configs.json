@@ -712,6 +712,12 @@
       "nClass": "Rs",
       "sts": 20770,
       "aliases": []
+    },
+    "983e9c18": {
+      "sig": "Yx(34,6729,Tp(11,2542,INPUT))",
+      "nClass": "Xx",
+      "sts": 20773,
+      "aliases": []
     }
   }
 }
