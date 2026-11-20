@@ -718,6 +718,12 @@
       "nClass": "Xx",
       "sts": 20773,
       "aliases": []
+    },
+    "6b3d0364": {
+      "sig": "im(20,3725,jm(18,7422,INPUT))",
+      "nClass": "hm",
+      "sts": 20774,
+      "aliases": []
     }
   }
 }
