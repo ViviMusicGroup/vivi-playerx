@@ -736,6 +736,12 @@
       "nClass": "Xo",
       "sts": 20779,
       "aliases": []
+    },
+    "9244921b": {
+      "sig": "od(2,7762,pd(13,3764,INPUT))",
+      "nClass": "nd",
+      "sts": 20780,
+      "aliases": []
     }
   }
 }
